@@ -41,6 +41,8 @@ def contact(request):
 def tracker(request):
     return render(request,'shop/tracker.html')
 
+def add_item(request):
+    return render(request,'shop/add_item.html')
 
 def search(request):
     return  HttpResponse("This is search")
