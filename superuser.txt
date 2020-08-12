@@ -1,3 +1,5 @@
 username: admin
-emal: deepak.16214334@gmail.com
+email: deepak.16214334@gmail.com
 password: admin
+
+project made with python 3.7 and django 3.1
