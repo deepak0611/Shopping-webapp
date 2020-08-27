@@ -1,17 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.files.storage import FileSystemStorage
+from datetime import date
 from .models import *
 
 # Create your views here.
 def index(request):
     # pdt=Product.objects.all()
     # rangerr=range(0,2)
-    cats=Product.objects.values('category').distinct()
-    # print(cats)
-    pdt=[]
-    for cat in cats:
-        prod=Product.objects.filter(category=cat['category'])
-        pdt.append(prod)
+    pdt=Product.objects.all()
+
 
 
     return render(request,'shop/index.html',{'product':pdt})
@@ -42,6 +40,14 @@ def tracker(request):
     return render(request,'shop/tracker.html')
 
 def add_item(request):
+    if request.method == 'POST' and request.FILES['myimage']:
+        name=request.POST.get('name','')
+        category=request.POST.get('category','')
+        price=request.POST.get('price','')
+        desc=request.POST.get('desc','')
+        myimage=request.FILES['myimage']
+        product=Product(product_name=name,category=category,price=price,desc=desc,image=myimage,pub_date=date.today())
+        product.save()
     return render(request,'shop/add_item.html')
 
 def search(request):
@@ -52,4 +58,8 @@ def prodView(request):
     return  HttpResponse("This is prodView")
 
 def checkout(request):
-    return  HttpResponse("This is checkout")
+    if request.method == "GET":
+        # return render(request, 'shop/hihi.txt')
+        return  HttpResponse("This is checkout")
+
+    return  HttpResponse("This is error")

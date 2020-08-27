@@ -13,31 +13,43 @@
 
 
 <div class="container my-3">
-<h2>Add item to homepage</h2>
-<form action="" method="post">
-    {% csrf_token %}
+
+  <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
   <div class="form-group">
-    <label for="exampleFormControlInput1">Name</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Enter your name">
+    <label for="exampleFormControlInput1">Product Name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Enter your product name">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="xyz@gmail.com">
+    <label for="exampleFormControlSelect1">Select category</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="category">
+      <option>Mobile & Tablets</option>
+      <option>Clothing</option>
+      <option>Electronic accessories</option>
+      <option>Grocery</option>
+      <option>Home Decoration</option>
+    </select>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Mobile no</label>
-    <input type="tel" class="form-control" id="exampleFormControlInput1" name="phone" placeholder="Enter phone number">
+   <div class="form-group">
+    <label for="exampleFormControlInput1">Price</label>
+    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Price" name="price">
+  </div>
+   <div class="form-group">
+    <label for="exampleFormControlInput1">Upload a image of product</label>
+    <input type="file" class="form-control-file" id="exampleFormControlInput1" name="myimage">
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">How can we help you ?</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="5"></textarea>
+    <label for="exampleFormControlTextarea1">Description about Product</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
   </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Add Item</button>
-  </div>
-
+   <br>
+   <button type="submit" class="btn btn-primary">Add Product</button>
 </form>
+
+
+
+
 </div>
 
 

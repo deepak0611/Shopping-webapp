@@ -6,4 +6,28 @@
 {% block body%}
 <h1>This is tracker page</h1>
 
+<button onclick="dataretriver()">click me</button>
+<p id="pp"></p>
+<p id="demo"></p>
+
+<script>
+  function dataretriver() {
+  document.getElementById("pp").innerHTML = "Your data will be shown here.";
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("demo").innerHTML = this.responseText;
+    }
+    else if(this.readyState == 4 && this.status == 404){
+     document.getElementById("demo").innerHTML = "page not found";
+    }
+    else{
+    document.getElementById("demo").innerHTML = "error";
+    }
+  };
+  xhttp.open("GET", "/shop/checkout/", true);
+  xhttp.send();
+}
+</script>
+
 {% endblock %}
